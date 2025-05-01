@@ -1,0 +1,14 @@
+@use "./variables/_colors.scss";
+@forward "./pages/_login.scss";
+@forward "./components/_components.scss";
+
+body {
+  margin: 0px;
+  padding: 0px;
+  box-shadow: none;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.container {
+  max-width: 1440px;
+}
