@@ -1,3 +1,4 @@
+import Logo from "../assets/icons/devtodev/Logo";
 import GithubIcon from "../assets/icons/GithubIcon";
 import GoogleIcon from "../assets/icons/Google/GoogleIcon";
 import LottieLogin from "../assets/lotties/LottieLogin";
@@ -7,8 +8,6 @@ import { useAuth } from "../hooks/useAuth";
 const Login = () => {
   const { user, signInWithGoogle, signInWithGithub } = useAuth();
 
-  console.log(user);
-
   return (
     <section className="login">
       <div className="login-left-content container">
@@ -16,6 +15,7 @@ const Login = () => {
       </div>
       <div className="login-right-content">
         <section>
+          <Logo />
           <Button className="signInWithGoogle" onClick={signInWithGoogle}>
             <GoogleIcon /> Entrar com Google
           </Button>

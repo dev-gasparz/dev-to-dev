@@ -4,6 +4,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   GithubAuthProvider,
+  signOut,
 } from "firebase/auth";
 
 type User = {
@@ -13,17 +14,17 @@ type User = {
 };
 
 type AuthContextType = {
+  loading: boolean;
   user: User | undefined;
   signInWithGoogle: () => Promise<void>;
   signInWithGithub: () => Promise<void>;
+  logout: () => Promise<void>;
 };
 
 export const AuthContext = createContext({} as AuthContextType);
 
 export function AuthContextProvider({ children }: React.PropsWithChildren) {
   const [user, setUser] = useState<User>();
-  const userData = auth;
-  console.log(userData);
 
   const signInWithGoogle = async (): Promise<void> => {
     const provider = new GoogleAuthProvider();
@@ -32,9 +33,15 @@ export function AuthContextProvider({ children }: React.PropsWithChildren) {
 
   const signInWithGithub = async (): Promise<void> => {
     const provider = new GithubAuthProvider();
-    console.log(provider);
     await signInWithPopup(auth, provider);
   };
+
+  const logout = async (): Promise<void> => {
+    await signOut(auth);
+    setUser(undefined); // limpa o user no context
+  };
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -51,6 +58,9 @@ export function AuthContextProvider({ children }: React.PropsWithChildren) {
           avatar: photoURL,
         });
       }
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     });
 
     return () => {
@@ -59,7 +69,9 @@ export function AuthContextProvider({ children }: React.PropsWithChildren) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, signInWithGoogle, signInWithGithub }}>
+    <AuthContext.Provider
+      value={{ user, signInWithGoogle, signInWithGithub, loading, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

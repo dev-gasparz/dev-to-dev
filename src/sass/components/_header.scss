@@ -1,0 +1,29 @@
+@use "../variables/_colors.scss";
+
+header {
+  border-bottom: 1px solid colors.$border;
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0px auto;
+    height: 90px;
+  }
+
+  .right-content {
+    button {
+      color: colors.$purple;
+      padding: 0px 24px;
+      border: 1px solid colors.$purple;
+      height: 40px;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        color: colors.$white;
+        border: 1px solid colors.$red;
+        background-color: colors.$red;
+      }
+    }
+  }
+}
