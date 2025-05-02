@@ -31,4 +31,16 @@
     max-width: 380px;
     width: 100%;
   }
+
+  @media (max-width: 600px) {
+    background-color: colors.$white;
+
+    .login-left-content {
+      display: none;
+    }
+
+    .login-right-content {
+      width: 100%;
+    }
+  }
 }

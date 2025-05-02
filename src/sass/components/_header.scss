@@ -26,4 +26,12 @@ header {
       }
     }
   }
+
+  @media (max-width: 600px) {
+    padding: 0px 20px;
+
+    button {
+      height: 30px;
+    }
+  }
 }
