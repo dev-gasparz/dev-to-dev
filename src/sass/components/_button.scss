@@ -7,8 +7,8 @@ button {
   height: 48px;
   width: 100%;
   max-width: 320px;
-  border: 1px solid colors.$red;
-  background-color: colors.$red;
+  border: 1px solid colors.$black;
+  background-color: transparent;
   color: colors.$white;
   border-radius: 8px;
   font-weight: 700;
@@ -16,12 +16,29 @@ button {
   cursor: pointer;
   transition: all 0.2s ease;
 
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.signInWithGoogle {
+  border: 1px solid colors.$red;
+  background-color: colors.$red;
+  gap: 12px;
+
   &:hover {
     background-color: colors.$redHover;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
+}
 
-  &:active {
-    transform: scale(0.98);
+.signInWithGithub {
+  border: 1px solid colors.$black;
+  background-color: colors.$black;
+  gap: 12px;
+
+  &:hover {
+    background-color: colors.$blackHover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 }

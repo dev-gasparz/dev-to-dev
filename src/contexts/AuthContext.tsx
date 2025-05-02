@@ -1,9 +1,14 @@
 import { createContext, ReactNode } from "react";
 import { auth } from "../services/firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from "firebase/auth";
 
 type AuthContextType = {
   signInWithGoogle: () => Promise<void>;
+  signInWithGithub: () => Promise<void>;
 };
 
 export const AuthContext = createContext({} as AuthContextType);
@@ -17,8 +22,13 @@ export function AuthContextProvider({ children }: React.PropsWithChildren) {
     await signInWithPopup(auth, provider);
   };
 
+  const signInWithGithub = async (): Promise<void> => {
+    const provider = new GithubAuthProvider();
+    await signInWithPopup(auth, provider);
+  };
+
   return (
-    <AuthContext.Provider value={{ signInWithGoogle }}>
+    <AuthContext.Provider value={{ signInWithGoogle, signInWithGithub }}>
       {children}
     </AuthContext.Provider>
   );
