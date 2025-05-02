@@ -1,11 +1,19 @@
 import GithubIcon from "../assets/icons/GithubIcon";
-import GoogleIcon from "../assets/icons/googleIcon";
+import GoogleIcon from "../assets/icons/Google/GoogleIcon";
 import LottieLogin from "../assets/lotties/LottieLogin";
 import { Button } from "../components/Button/Button";
 import { useAuth } from "../hooks/useAuth";
 
 const Login = () => {
-  const { signInWithGoogle, signInWithGithub } = useAuth();
+  const { user, signInWithGoogle, signInWithGithub } = useAuth();
+
+  async function handleLogin() {
+    if (!user) {
+      await signInWithGoogle();
+    }
+
+    ("/auau");
+  }
 
   return (
     <section className="login">
@@ -14,7 +22,7 @@ const Login = () => {
       </div>
       <div className="login-right-content">
         <form action="">
-          <Button className="signInWithGoogle" onClick={signInWithGoogle}>
+          <Button className="signInWithGoogle" onClick={handleLogin}>
             <GoogleIcon /> Entrar com Google
           </Button>
           <Button className="signInWithGithub" onClick={signInWithGithub}>
