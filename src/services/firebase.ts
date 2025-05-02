@@ -1,7 +1,12 @@
-import firebase from "firebase/compat/app";
-
-import "firebase/compat/auth";
-import "firebase/compat/database";
+// firebase.js (ou seu arquivo de configuração do Firebase)
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBb6Mekd0L5O3GZVBQTZQ0rqLP96DiAV6E",
@@ -13,9 +18,15 @@ const firebaseConfig = {
   measurementId: "G-SZH04073X0",
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const database = firebase.database();
+const auth = getAuth(app);
+const database = getDatabase(app);
 
-export { firebase };
+export {
+  auth,
+  database,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  signInWithPopup,
+};

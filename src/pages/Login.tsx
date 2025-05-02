@@ -7,13 +7,7 @@ import { useAuth } from "../hooks/useAuth";
 const Login = () => {
   const { user, signInWithGoogle, signInWithGithub } = useAuth();
 
-  async function handleLogin() {
-    if (!user) {
-      await signInWithGoogle();
-    }
-
-    ("/auau");
-  }
+  console.log(user);
 
   return (
     <section className="login">
@@ -21,14 +15,14 @@ const Login = () => {
         <LottieLogin />
       </div>
       <div className="login-right-content">
-        <form action="">
-          <Button className="signInWithGoogle" onClick={handleLogin}>
+        <section>
+          <Button className="signInWithGoogle" onClick={signInWithGoogle}>
             <GoogleIcon /> Entrar com Google
           </Button>
           <Button className="signInWithGithub" onClick={signInWithGithub}>
             <GithubIcon /> Entrar com Github
           </Button>
-        </form>
+        </section>
       </div>
     </section>
   );

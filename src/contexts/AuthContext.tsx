@@ -24,7 +24,17 @@ export function AuthContextProvider({ children }: React.PropsWithChildren) {
   const [user, setUser] = useState<User>();
   const userData = auth;
   console.log(userData);
-  console.log(user);
+
+  const signInWithGoogle = async (): Promise<void> => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+  };
+
+  const signInWithGithub = async (): Promise<void> => {
+    const provider = new GithubAuthProvider();
+    console.log(provider);
+    await signInWithPopup(auth, provider);
+  };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -47,16 +57,6 @@ export function AuthContextProvider({ children }: React.PropsWithChildren) {
       unsubscribe();
     };
   }, []);
-
-  const signInWithGoogle = async (): Promise<void> => {
-    const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
-  };
-
-  const signInWithGithub = async (): Promise<void> => {
-    const provider = new GithubAuthProvider();
-    await signInWithPopup(auth, provider);
-  };
 
   return (
     <AuthContext.Provider value={{ user, signInWithGoogle, signInWithGithub }}>

@@ -4,9 +4,9 @@ import Login from "./pages/Login";
 function App() {
   return (
     <AuthContextProvider>
-      <body>
+      <main>
         <Login />
-      </body>
+      </main>
     </AuthContextProvider>
   );
 }
