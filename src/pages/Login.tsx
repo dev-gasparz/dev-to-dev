@@ -6,7 +6,7 @@ import { Button } from "../components/Button/Button";
 import { useAuth } from "../hooks/useAuth";
 
 const Login = () => {
-  const { user, signInWithGoogle, signInWithGithub } = useAuth();
+  const { signInWithGoogle, signInWithGithub } = useAuth();
 
   return (
     <section className="login">
