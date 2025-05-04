@@ -3,7 +3,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { Button } from "../Button/Button";
 
 const Header = () => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   return (
     <header>
       <div className="header-content">
@@ -11,6 +11,9 @@ const Header = () => {
           <Logo />
         </a>
         <div className="right-content">
+          <div className="profile">
+            <img className="profile-avatar" src={user?.avatar} alt="" />
+          </div>
           <Button onClick={logout}>Encerrar sessão</Button>
         </div>
       </div>

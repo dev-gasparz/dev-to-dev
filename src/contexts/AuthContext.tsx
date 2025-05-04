@@ -25,6 +25,7 @@ export const AuthContext = createContext({} as AuthContextType);
 
 export function AuthContextProvider({ children }: React.PropsWithChildren) {
   const [user, setUser] = useState<User>();
+  const [loading, setLoading] = useState(true);
 
   const signInWithGoogle = async (): Promise<void> => {
     const provider = new GoogleAuthProvider();
@@ -37,11 +38,15 @@ export function AuthContextProvider({ children }: React.PropsWithChildren) {
   };
 
   const logout = async (): Promise<void> => {
+    setLoading(true);
     await signOut(auth);
-    setUser(undefined); // limpa o user no context
-  };
+    setUser(undefined);
 
-  const [loading, setLoading] = useState(true);
+    // Simula carregamento por 2s antes de redirecionar
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -60,7 +65,7 @@ export function AuthContextProvider({ children }: React.PropsWithChildren) {
       }
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 900);
     });
 
     return () => {

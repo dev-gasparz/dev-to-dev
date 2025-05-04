@@ -1,12 +1,24 @@
+// pages/Dashboard.tsx
+import { tools } from "../components/ToolCard/toolsData";
+import { ToolCard } from "../components/ToolCard/ToolCard";
 import Header from "../components/Header/Header";
 
-const Dashboard = () => {
+export function Dashboard() {
   return (
-    <div>
+    <>
       <Header />
-      <h1>Dashboard</h1>
-    </div>
+      <div className="dashboard-grid">
+        {tools.map((tool) => (
+          <ToolCard
+            key={tool.id}
+            title={tool.title}
+            description={tool.description}
+            path={tool.path}
+          />
+        ))}
+      </div>
+    </>
   );
-};
+}
 
 export default Dashboard;

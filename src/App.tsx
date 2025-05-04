@@ -1,3 +1,4 @@
+import Spinner from "./assets/icons/spinner/Spinner";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import { useAuth } from "./hooks/useAuth";
 import Dashboard from "./pages/Dashboard";
@@ -8,7 +9,7 @@ function AppRoutes() {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return <p>Carregando...</p>; // ou um spinner
+    return <Spinner />;
   }
 
   return (
