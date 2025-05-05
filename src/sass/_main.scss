@@ -1,6 +1,7 @@
 @use "./variables/_colors.scss";
 @forward "./pages/_login.scss";
 @forward "./components/_components.scss";
+@forward "./pages/tools/_tools.scss";
 
 body {
   margin: 0px;

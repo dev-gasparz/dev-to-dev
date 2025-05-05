@@ -1,10 +1,10 @@
 // toolsData.ts
 export const tools = [
   {
-    id: "json-validator",
-    title: "Validador de JSON",
-    description: "Formate e valide JSON facilmente.",
-    path: "/json-validator",
+    id: "px-to-rem",
+    title: "Conversor de PX para REM",
+    description: "Converte PX para REM",
+    path: "/dashboard/px-to-rem",
   },
   {
     id: "uuid-generator",

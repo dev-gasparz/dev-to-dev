@@ -4,6 +4,7 @@ import { useAuth } from "./hooks/useAuth";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import PxToRem from "./pages/tools/PxToRem";
 
 function AppRoutes() {
   const { user, loading } = useAuth();
@@ -17,6 +18,10 @@ function AppRoutes() {
       <Route
         path="/"
         element={user ? <Navigate to="/dashboard" /> : <Login />}
+      />
+      <Route
+        path="/dashboard/px-to-rem"
+        element={user ? <PxToRem /> : <Navigate to="/dashboard/px-to-rem" />}
       />
       <Route
         path="/dashboard"
